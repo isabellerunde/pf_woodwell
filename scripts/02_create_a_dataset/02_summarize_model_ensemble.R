@@ -7,9 +7,8 @@ library(raster)
 
 # script to compute the ensemble 5th, 10th, 50th, 90th, 95th percentile, mean, REMO mean, RegCM mean
 
-# 3/31 - error at v=7 - RERUN 
-
-# enter variable name and units 
+# enter variable name
+module <- "water"
 var_name <- c("annual_sum_pr",
               "annual_sum_dry_days",
               "annual_sum_wet_days",
@@ -29,10 +28,10 @@ model_table <- read.csv("~/mybucket/probable_futures/regcm_remo_model_info.csv")
 thresholds <- c("1C", "15C", "2C", "25C", "3C", "19712000")
 
 
-for(v in 8:length(var_name)){
+for(v in 1:length(var_name)){
   
-  data_dir <- paste0("~/climate_data/Probable_futures/water_module/rcm_data/", var_name[v], "/annual_by_time_span/")
-  out_dir <- paste0("~/climate_data/Probable_futures/water_module/rcm_data/", var_name[v], "/summarize_model_ensemble/")
+  data_dir <- paste0("~/climate_data/Probable_futures/", module, "_module/rcm_data/", var_name[v], "/annual_by_time_span/")
+  out_dir <- paste0("~/climate_data/Probable_futures/", module, "_module/rcm_data/", var_name[v], "/summarize_model_ensemble/")
   temp_out_dir <- paste0("~/mybucket/probable_futures/working/summarized_data/")
   system(command = paste0("mkdir ", out_dir) )
 
